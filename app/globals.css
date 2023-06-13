@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+}
+
+*::-webkit-scrollbar {
+  color: pink;
+  width: 5px;
+  height: 6px;
+  padding-top: 10px;
+}
+
+*::-webkit-scrollbar-button {
+  background: blue;
+  display: none;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, rgb(17 24 39), transparent);
+  @apply text-gray-900;
+}
+
+body {
+  @apply bg-black text-neutral-200;
+  user-select: none;
+}
