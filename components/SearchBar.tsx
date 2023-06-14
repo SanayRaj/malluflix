@@ -1,6 +1,7 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { NextPage, NextPageContext } from "next";
 import React, { useState } from "react";
 
 export default function SearchBar() {

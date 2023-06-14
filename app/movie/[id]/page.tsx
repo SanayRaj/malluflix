@@ -1,22 +1,17 @@
 import BlurImage from "@/components/BlurImage";
 import { supabase } from "@/lib/supabase/supabaseConfig";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export async function getMovie(id) {
+async function getMovie(id: string) {
   let { data, error } = await supabase.from("movies").select().eq("id", id);
-  console.log(data, error);
-
-  if (error) console.log("Supabase Error", error);
-  if (!data[0]) {
+  if (error || !data) {
     notFound();
-  }
-  return data[0];
+  } else return { movie: data[0] };
 }
 
-export default async function page({ params }) {
-  const movie = await getMovie(params.id);
+const page = async ({ params }: { params: { id: string } }) => {
+  const movie = (await getMovie(params.id)).movie;
   const awailableDownloads = [
     {
       size: "364MB",
@@ -90,4 +85,6 @@ export default async function page({ params }) {
       </section>
     </main>
   );
-}
+};
+
+export default page;
