@@ -1,6 +1,5 @@
 import BlurImage from "@/components/BlurImage";
 import { supabase } from "@/lib/supabase/supabaseConfig";
-import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 10;
@@ -15,31 +14,30 @@ export async function getMovies() {
   return data;
 }
 
-export default async function Home() {
+export default async function page() {
   const data = await getMovies();
-  console.log(data);
 
   return (
     <main className="w-full container mx-auto px-3">
       <div className="gap-2 sm:gap-6 w-full grid grid-cols-2 sm:grid-cols-5 rounded-xl pt-12 sm:pt-5 mb-6">
-        {data?.map((v, i) => (
+        {data?.map((value, i) => (
           <Link
-            href={`/movie/${v.id}`}
+            href={`/movie/${value.id}`}
             key={i}
             className="relative w-full rounded-xl aspect-[9/14] overflow-hidden"
           >
             <BlurImage
-              src={v.poster_img}
+              src={value.poster_img}
               className="absolute inset-0 -z-10"
-              alt={v.title}
+              alt={value.title}
               fill
             />
             <div className="bg-gradient-to-b from-transparent to-gray-950 absolute bottom-0 left-0 right-0 top-1/2 flex flex-col justify-end p-2 ">
               <h1 className="font-bold font-title text-sm sm:text-lg">
-                {v.title}
+                {value.title}
               </h1>
               <p className="text-neutral-500 text-xs sm:text-sm">
-                {v.release} • {v.duration}
+                {value.release} • {value.duration}
               </p>
             </div>
           </Link>
