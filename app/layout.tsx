@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} ${title.variable}`}>
-        <header className=" z-50 fixed sm:sticky top-0 left-0 right-0 bg-gradient-to-t from-transparent to-black sm:bg-black">
+        <header className=" z-50 sticky top-0 left-0 right-0 bg-gradient-to-t from-transparent to-black sm:bg-black">
           <nav className="flex mx-auto container py-2 items-center justify-between px-3 z-30">
             <Link href={"/"}>
               <Image

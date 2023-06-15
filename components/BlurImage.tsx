@@ -7,7 +7,12 @@ function cn(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function BlurImage({ src, alt, ...props }: ImageProps) {
+export default function BlurImage({
+  src,
+  alt,
+  className,
+  ...props
+}: ImageProps) {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
@@ -15,6 +20,8 @@ export default function BlurImage({ src, alt, ...props }: ImageProps) {
       alt={alt}
       {...props}
       className={cn(
+        // @ts-ignore
+        className,
         "group-hover:opacity-75 duration-700 ease-in-out",
         isLoading
           ? "grayscale blur-2xl scale-110"

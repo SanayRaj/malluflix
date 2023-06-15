@@ -36,25 +36,26 @@ const page = async ({ params }: { params: { id: string } }) => {
   ];
 
   return (
-    <main className="w-full container mx-auto mb-6">
-      <section className="flex flex-col sm:flex-row sm:mt-4 sm:mx-6">
-        <BlurImage
-          src={movie?.poster_img}
-          className="sm:rounded-2xl w-full aspect-[9/12] sm:w-[280px]"
-          alt={movie?.title}
-          width={280}
-          height={100}
-        />
+    <main className="w-full container mx-auto mb-6 sm:px-3 -mt-14 sm:mt-0">
+      <section className="grid sm:grid-cols-[280px_auto] sm:grid-flow-col sm:mt-4 sm:mx-4">
+        <div className="sm:w-[280px] bg-red-950 aspect-square sm:aspect-[9/14] w-full rounded-2xl overflow-hidden -z-10">
+          <BlurImage
+            src={movie?.poster_img}
+            className="rounded-2xl w-full aspect-[9/14]"
+            alt={movie?.title}
+            width={280}
+            height={0}
+          />
+        </div>
 
         <div className="px-4 pt-4 sm:ml-4 sm:mt-4 bg-black -mt-10 rounded-t-3xl">
-          <span className="flex items-end">
-            <h1 className="text-2xl sm:text-4xl font-extrabold font-title">
-              {movie?.title}
-            </h1>
-            <p className="text-neutral-400 ml-2">
-              • {movie.release} • {movie.duration}
-            </p>
-          </span>
+          <h1 className="text-2xl sm:text-4xl font-extrabold font-title">
+            {movie?.title}
+          </h1>
+
+          <p className="text-neutral-400">
+            {movie.release} • {movie.duration}
+          </p>
           <p className="text-lg text-neutral-400 mt-3">{movie.discription}</p>
           <div className="flex gap-2 my-2">
             {movie?.tags.split(",").map((v, i) => (
