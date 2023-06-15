@@ -38,7 +38,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <main className="w-full container mx-auto mb-6 sm:px-3 -mt-14 sm:mt-0">
       <section className="grid sm:grid-cols-[280px_auto] sm:grid-flow-col sm:mt-4 sm:mx-4">
-        <div className="sm:w-[280px] bg-red-950 aspect-square sm:aspect-[9/14] w-full rounded-2xl overflow-hidden -z-10">
+        <div className="sm:w-[280px] aspect-square sm:aspect-[9/14] w-full rounded-2xl overflow-hidden -z-10">
           <BlurImage
             src={movie?.poster_img}
             className="rounded-2xl w-full aspect-[9/14]"

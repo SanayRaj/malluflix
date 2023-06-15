@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase/supabaseConfig";
 import useDebounce from "@/lib/utils/useDebounce";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SearchBar() {
   const [loading, setloading] = useState(false);
@@ -47,7 +48,7 @@ export default function SearchBar() {
         className="transition-all border border-neutral-900 text-sm focus:outline-none focus:border-red-600 bg-neutral-900 mx-1 px-4 py-2 rounded-full"
         // style={{ display: expanded ? "block" : "none" }}
         onChange={({ target }) => setSearchParm(target.value)}
-        onBlur={() => setModalShown(false)}
+        onBlur={() => setTimeout(() => setModalShown(false), 500)}
         onFocus={() => setModalShown(true)}
         // value={searchParm}
       />
@@ -64,7 +65,8 @@ export default function SearchBar() {
             </div>
           ) : (
             fetchRes.map((value, key) => (
-              <div
+              <Link
+                href={`/movie/${value.id}`}
                 className="flex hover:bg-neutral-700 rounded-md overflow-hidden items-center"
                 key={key}
               >
@@ -79,7 +81,7 @@ export default function SearchBar() {
                   <p className="block font-bold">{value.title}</p>
                   <p className="block text-sm">{value.tags}</p>
                 </div>
-              </div>
+              </Link>
             ))
           )}
         </div>
