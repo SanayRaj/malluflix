@@ -31,3 +31,21 @@ body {
   @apply bg-black text-neutral-200;
   user-select: none;
 }
+.animate-loading {
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes loading {
+  0% {
+    @apply bg-neutral-800;
+  }
+  50% {
+    @apply bg-neutral-800/50;
+  }
+  100% {
+    @apply bg-neutral-800;
+  }
+}

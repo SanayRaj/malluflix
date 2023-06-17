@@ -2,6 +2,7 @@ import BlurImage from "@/components/BlurImage";
 import { supabase } from "@/lib/supabase/supabaseConfig";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Loading from "./loading";
 
 async function getMovie(id: string) {
   let { data, error } = await supabase.from("movies").select().eq("id", id);
@@ -36,7 +37,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   ];
 
   return (
-    <main className="w-full container mx-auto mb-6 sm:px-3 -mt-14 sm:mt-0">
+    <main className="w-full container mx-auto mb-6 sm:px-3 -mt-14 sm:mt-0 ">
       <section className="grid sm:grid-cols-[280px_auto] sm:grid-flow-col sm:mt-4 sm:mx-4">
         <div className="sm:w-[280px] aspect-square sm:aspect-[9/14] w-full rounded-2xl overflow-hidden -z-10">
           <BlurImage
@@ -57,6 +58,9 @@ const page = async ({ params }: { params: { id: string } }) => {
             {movie.release} • {movie.duration}
           </p>
           <p className="text-lg text-neutral-400 mt-3">{movie.discription}</p>
+          <p className="text-base text-neutral-400 mt-3">
+            Director: {movie.director}
+          </p>
           <div className="flex gap-2 my-2">
             {movie?.tags.split(",").map((v, i) => (
               <div

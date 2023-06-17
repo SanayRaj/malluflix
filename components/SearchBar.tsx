@@ -4,6 +4,7 @@ import useDebounce from "@/lib/utils/useDebounce";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 
 export default function SearchBar() {
   const [loading, setloading] = useState(false);
@@ -42,16 +43,27 @@ export default function SearchBar() {
 
   return (
     <div className="relative max-w-md">
-      <input
-        type="text"
-        placeholder="Search here"
-        className="transition-all border border-neutral-900 text-sm focus:outline-none focus:border-red-600 bg-neutral-900 mx-1 px-4 py-2 rounded-full"
-        // style={{ display: expanded ? "block" : "none" }}
-        onChange={({ target }) => setSearchParm(target.value)}
-        onBlur={() => setTimeout(() => setModalShown(false), 500)}
-        onFocus={() => setModalShown(true)}
-        // value={searchParm}
-      />
+      <div className="flex items-center border group border-neutral-900 text-sm focus-within:border-red-600 bg-neutral-900 rounded-full">
+        <input
+          type="text"
+          placeholder="Search here"
+          className="transition-all px-3 py-2 bg-transparent  rounded-full outline-none"
+          // style={{ display: expanded ? "block" : "none" }}
+          onChange={({ target }) => setSearchParm(target.value)}
+          onBlur={() => setTimeout(() => setModalShown(false), 500)}
+          onFocus={() => setModalShown(true)}
+          value={searchParm}
+        />
+
+        <XMarkIcon
+          color="white"
+          width={32}
+          onClick={() => setSearchParm("")}
+          className={`p-1 rounded-full outline-none ${
+            !searchParm ? "invisible" : "visible"
+          }`}
+        />
+      </div>
 
       {searchParm != "" && modalShown && value != "" && (
         <div className="absolute top-9 mt-2 rounded-xl w-full sm:w-96 right-0 p-2 bg-neutral-900">
