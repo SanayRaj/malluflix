@@ -19,6 +19,7 @@ export interface Database {
           release: number;
           duration: string;
           tags: string;
+          director: string;
         };
         Insert: {
           created_at: string;
@@ -29,6 +30,7 @@ export interface Database {
           release: number;
           duration: string;
           tags: string;
+          director: string;
         };
         Update: {
           created_at: string;
@@ -39,6 +41,7 @@ export interface Database {
           release: number;
           duration: string;
           tags: string;
+          director: string;
         };
       };
     };

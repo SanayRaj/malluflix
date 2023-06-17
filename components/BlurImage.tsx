@@ -22,7 +22,7 @@ export default function BlurImage({
       className={cn(
         // @ts-ignore
         className,
-        "group-hover:opacity-75 duration-700 ease-in-out",
+        "group-hover:opacity-75 duration-700 ease-in-out animate-loading",
         isLoading
           ? "grayscale blur-2xl scale-110"
           : "grayscale-0 blur-0 scale-100"
